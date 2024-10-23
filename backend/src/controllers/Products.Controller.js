@@ -22,7 +22,7 @@ async function save(req, res, next) {
     const product = new Product();
     product.title = req.body.title;
     product.description = req.body.description;
-    if (parseFloat(req.body.price) > 0) {
+    if (parseFloat(req.body.price) < 0) {
       throw new Error("Price must be a positive number");
     }
     product.price = req.body.price;
