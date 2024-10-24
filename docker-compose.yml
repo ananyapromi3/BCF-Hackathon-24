@@ -19,6 +19,17 @@ services:
       DB_URI: mongodb://mongo_db:27017/dockerlearn
     depends_on:
       - mongo_db
+
+  login:
+    build: ./services/login
+    ports:
+      - 4001:3000
+    environment:
+      APP_NAME: LearnDocker
+      PORT: 3000
+      DB_URI: mongodb://mongo_db:27017/dockerlearn
+    depends_on:
+      - mongo_db
   
   frontend:
     build: ./services/frontend
