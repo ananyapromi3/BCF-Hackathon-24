@@ -12,29 +12,51 @@ services:
   app:
     build: ./services/backend
     ports:
-      - 4000:3000
+      - 4001:3000
     environment:
       APP_NAME: LearnDocker
       PORT: 3000
-      DB_URI: mongodb://mongo_db:27017/dockerlearn
+      DB_URI: mongodb+srv://ananyapromi3:promi3@train.7ag3z.mongodb.net/?retryWrites=true&w=majority&appName=Train/train
     depends_on:
       - mongo_db
 
   login:
     build: ./services/login-register
     ports:
-      - 4001:3000
+      - 4002:3000
     environment:
       APP_NAME: LearnDocker
       PORT: 3000
-      DB_URI: mongodb://mongo_db:27017/dockerlearn
+      DB_URI: mongodb+srv://ananyapromi3:promi3@train.7ag3z.mongodb.net/?retryWrites=true&w=majority&appName=Train/train
+    depends_on:
+      - mongo_db
+
+  train-search:
+    build: ./services/train-search
+    ports:
+      - 4003:3001
+    environment:
+      APP_NAME: LearnDocker
+      PORT: 3001
+      DB_URI: mongodb+srv://ananyapromi3:promi3@train.7ag3z.mongodb.net/?retryWrites=true&w=majority&appName=Train/train
+    depends_on:
+      - mongo_db
+  
+  book-ticket:
+    build: ./services/book-ticket
+    ports:
+      - 4004:3002
+    environment:
+      APP_NAME: LearnDocker
+      PORT: 3002
+      DB_URI: mongodb+srv://ananyapromi3:promi3@train.7ag3z.mongodb.net/?retryWrites=true&w=majority&appName=Train/train
     depends_on:
       - mongo_db
   
   frontend:
     build: ./services/frontend
     ports:
-      - 4002:3000
+      - 4000:3000
 
   frontend-demo:
     build: ./services/frontend-prev

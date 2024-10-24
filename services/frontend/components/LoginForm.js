@@ -26,7 +26,7 @@ const LoginForm = () => {
     console.log("Email:", email);
     console.log("Password:", password);
     // Make a POST request to your backend API for authentication
-    const response = await fetch("http://localhost:4001/auth/login", {
+    const response = await fetch("http://localhost:4002/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

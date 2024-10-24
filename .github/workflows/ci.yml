@@ -21,15 +21,25 @@ jobs:
         with:
           node-version: "18"
 
-      - name: Install backend dependencies
+      - name: Install login-register dependencies
         run: |
-          cd services/backend
+          cd services/login-register
           npm install
 
-      - name: Run backend tests
+      - name: Run login-register tests
         run: |
-          cd services/backend
-          npm test # Run tests in the backend
+          cd services/login-register
+          npm test # Run tests in the login-register
+
+      - name: Install train-search dependencies
+        run: |
+          cd services/train-search
+          npm install
+
+      - name: Run train-search tests
+        run: |
+          cd services/train-search
+          npm test # Run tests in the train-search
 
       - name: Set up Docker
         uses: docker/setup-buildx-action@v1
@@ -40,11 +50,20 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Build Docker image
+      - name: Build Docker image for login-register
         run: |
-          cd services/backend
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/dockerlearn:latest .
+          cd services/login-register
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/dockerlearn:login-register .
 
-      - name: Push Docker image
+      - name: Push Docker image for login-register
         run: |
-          docker push ${{ secrets.DOCKER_USERNAME }}/dockerlearn:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/dockerlearn:login-register
+
+      - name: Build Docker image for train-search
+        run: |
+          cd services/train-search
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/dockerlearn:train-search .
+
+      - name: Push Docker image for train-search
+        run: |
+          docker push ${{ secrets.DOCKER_USERNAME }}/dockerlearn:train-search
