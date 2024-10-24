@@ -23,12 +23,12 @@ jobs:
 
       - name: Install backend dependencies
         run: |
-          cd backend
+          cd services/backend
           npm install
 
       - name: Run backend tests
         run: |
-          cd backend
+          cd services/backend
           npm test # Run tests in the backend
 
       - name: Set up Docker
@@ -42,7 +42,7 @@ jobs:
 
       - name: Build Docker image
         run: |
-          cd backend
+          cd services/backend
           docker build -t ${{ secrets.DOCKER_USERNAME }}/dockerlearn:latest .
 
       - name: Push Docker image
