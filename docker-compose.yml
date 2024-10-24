@@ -58,6 +58,17 @@ services:
     depends_on:
       - mongo_db
 
+  payment:
+    build: ./services/payment
+    ports:
+      - 4006:3004
+    environment:
+      APP_NAME: LearnDocker
+      PORT: 3004
+      DB_URI: mongodb+srv://ananyapromi3:promi3@train.7ag3z.mongodb.net/?retryWrites=true&w=majority&appName=Train/train
+    depends_on:
+      - mongo_db
+
 
 
 volumes:
