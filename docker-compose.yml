@@ -9,16 +9,10 @@ services:
     volumes:
       - mongo_db:/data/db
 
-  app:
-    build: ./services/backend
+  frontend:
+    build: ./services/frontend
     ports:
-      - 4001:3000
-    environment:
-      APP_NAME: LearnDocker
-      PORT: 3000
-      DB_URI: mongodb+srv://ananyapromi3:promi3@train.7ag3z.mongodb.net/?retryWrites=true&w=majority&appName=Train/train
-    depends_on:
-      - mongo_db
+      - 4000:3000
 
   login:
     build: ./services/login-register
@@ -52,16 +46,19 @@ services:
       DB_URI: mongodb+srv://ananyapromi3:promi3@train.7ag3z.mongodb.net/?retryWrites=true&w=majority&appName=Train/train
     depends_on:
       - mongo_db
-  
-  frontend:
-    build: ./services/frontend
-    ports:
-      - 4000:3000
 
-  frontend-demo:
-    build: ./services/frontend-prev
+  otp:
+    build: ./services/otp
     ports:
-      - 8080:8080
+      - 4005:3003
+    environment:
+      APP_NAME: LearnDocker
+      PORT: 3003
+      DB_URI: mongodb+srv://ananyapromi3:promi3@train.7ag3z.mongodb.net/?retryWrites=true&w=majority&appName=Train/train
+    depends_on:
+      - mongo_db
+
+
 
 volumes:
   mongo_db: {}

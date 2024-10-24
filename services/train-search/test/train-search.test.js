@@ -1,4 +1,4 @@
-// train-search/src/controllers/train.Controller.js
+// train-search/test/train-search.test.js
 
 import { Train } from "../src/models/Train.js";
 import { searchTrains } from "../src/controllers/Train.Controller.js";
