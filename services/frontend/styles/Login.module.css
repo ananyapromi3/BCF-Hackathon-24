@@ -7,12 +7,11 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh; /* Ensure the container takes up the whole viewport height */
-    background-color:  var(--pcolor);
+    background: white url('/loginbgv3.png') no-repeat center;
     font-family: 'Poppins', sans-serif;
-    background-image: url('/loginbg3.jpg');
     --darkcolor: #2E0A24;
     --shadowcolor:rgba(46, 10, 36, 0.403);
-    --pcolor: #FB8F3B;
+    --pcolor: #0ba574;
     --ocolor: #FFB46E;
     --scolor: #FFE2C4;
     --wcolor: #FFFCF5;
@@ -29,12 +28,13 @@
   .card {
     position: relative;
     display: flex;
-    background-color: var(--wcolor);
-    border-radius: 30px;
-    width: 900px;
-    height: 650px;
-    box-shadow: 6px 6px 10px -1px rgba(0,0,0,0.15),
-    -6px -6px 10px -1px rgba(0,0,0,0.15);
+    /* background-color: blue; */
+    /* border-radius: 30px; */
+    width: 450px;
+    height: 90vh;
+    left: 30vw;
+    /* box-shadow: 6px 6px 10px -1px rgba(0,0,0,0.15),
+    -6px -6px 10px -1px rgba(0,0,0,0.15); */
   }
 
   .card:hover .span {
@@ -47,18 +47,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 900px;
+    width: 100%;
     border-radius: 30px 0px 0px  30px;
 }
     .learnlyimg img {
-        height: 95px;
+        height: 100%;
         padding: 40px;
 }
 
     .right {
         display: flex;
         flex-direction: column;
-        background-color: rgb(253, 249, 240);
+        /* background-color: red; */
         justify-content: center;
         align-items: left;
         width: 100%;
@@ -85,7 +85,6 @@
     font-weight: bold;
     margin-bottom: 20px;
     position: relative;
-    top: 30px;
     font-family: 'Montserrat', Helvetica, sans-serif;
     font-weight: 700;
 
@@ -177,7 +176,7 @@ input:checked + .radio_tile label {
     position: relative;
     margin: 20px 0;
     width: 100%;
-    gap: 1rem;
+    gap: 2rem;
     
   }
 
@@ -229,31 +228,32 @@ input:checked + .radio_tile label {
   
 
   .email {
-    background-color:rgba(255, 180, 115, 0.25);
+    border: 1px solid;
+    border-color: #5b5b5b;
+    border-radius: 8px;
     width: 100%;
     font-size: 17px;
     padding: 3%;
     outline: none;
-    border: solid 3px  transparent;
-    border-radius: 20px;
+    border: solid 2px  #c0c0c0;
+    border-radius: 10px;
   }
 
   .email::placeholder {
-    color: #f7921e89;
+    color: #b7b7b789;
   }
 
   .pass {
-    background-color: rgba(255, 180, 115, 0.25);
     width: 100%;
     font-size: 17px;
     padding: 3%;
     outline: none;
-    border: solid 3px   transparent;
-    border-radius: 20px;
+    border: solid 2px  #c0c0c0;
+    border-radius: 10px;
   }
 
   .pass::placeholder {
-    color: #f7921e89;
+    color: #b7b7b789;
   }
 
   
@@ -276,25 +276,26 @@ input:checked + .radio_tile label {
 
   
   .button {
-    /* width: 100px; */
+    width: 100%;
     display: inline-block;
     padding: 0.7vw;
-        padding-inline: 2vw;
-    background:  var(--otransition);
-    box-shadow: 0px 2px 2px  var(--shadowcolor);
-    color: var(--wcolor);
+        /* padding-inline: 5vw; */
+    background:  var(--pcolor);
+    box-shadow: 0px 2px 2px  var(--pcolor);
+    color: white;
     border: none;
     border-radius: 15px;
     font-size: 0.9vw;
     font-weight: 600;
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
+    margin-top: 20px;
   }
   
   .button:hover {
-    background:  var(--beigetransition);
+    background:  rgb(207, 213, 211);
     color: var(--pcolor);
-    box-shadow:0px 2px 10px  var(--shadowcolor);
+    box-shadow:0px 2px 10px  rgb(207, 213, 211);
     transform: translateY(-2px);
   }
   

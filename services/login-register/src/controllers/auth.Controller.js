@@ -2,6 +2,8 @@
 
 import User from "../models/User.js";
 import bcrypt from "bcrypt";
+// const jwt = require("jsonwebtoken");
+import jwt from "jsonwebtoken";
 
 // Registration logic
 async function register(req, res, next) {
@@ -62,12 +64,19 @@ async function login(req, res, next) {
       return res.status(400).json({
         status: 400,
         message: "Invalid password",
+        user: null,
       });
     }
+    console.log(user);
+    const token = jwt.sign({ userId: user._id, email: user.email }, "abc");
+    const decodedToken = jwt.verify(token, "abc");
+    console.log("Decoded Token:", decodedToken);
 
     return res.status(200).json({
       status: 200,
       message: "Login successful",
+      user: user,
+      token: token,
     });
   } catch (e) {
     console.log(e);
