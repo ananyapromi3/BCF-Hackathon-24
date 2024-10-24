@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import otpRoutes from "./routes/otp.routes.js";
 import dotenv from "dotenv";
-// import config from "./config.js";
+import config from "../config.js";
 
 dotenv.config();
 
@@ -25,7 +25,7 @@ mongoose
 app.use("/api/otp", otpRoutes);
 
 // Start the server
-const PORT = process.env.PORT || 3003;
+const PORT = config.dbUri || 3003;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });

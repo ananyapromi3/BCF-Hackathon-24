@@ -1,3 +1,4 @@
+// src/controllers/Train.Controller.js
 import { Train } from "../models/Train.js";
 
 // Controller for searching trains
@@ -58,5 +59,95 @@ export const getTrains = async (req, res) => {
     });
   } catch (error) {
     res.status(500).json({ message: "Error fetching payment status", error });
+  }
+};
+
+// src/controllers/Train.Controller.js
+// import { Train } from "../models/Train.js";
+
+// Controller to book a seat
+export const bookSeat = async (req, res) => {
+  try {
+    const { trainId, cabinType, seatNumber } = req.body;
+    console.log("trainId:", trainId);
+    console.log("cabinType:", cabinType);
+    console.log("seatNumber:", seatNumber);
+
+    if (!trainId || !cabinType || !seatNumber) {
+      return res
+        .status(400)
+        .json({
+          message: "Please provide train ID, cabin type, and seat number.",
+        });
+    }
+
+    // Find the train and cabin, and update the seat's isTrue field
+    const train = await Train.findOneAndUpdate(
+      {
+        _id: trainId,
+        "cabins.cabin_type": cabinType,
+        "cabins.seats.seat_number": seatNumber,
+      },
+      { $set: { "cabins.$[cabin].seats.$[seat].is_booked": true } },
+      {
+        arrayFilters: [
+          { "cabin.cabin_type": cabinType },
+          { "seat.seat_number": seatNumber },
+        ],
+        new: true,
+      }
+    );
+
+    if (!train) {
+      return res
+        .status(404)
+        .json({ message: "Train, cabin, or seat not found" });
+    }
+
+    res.status(200).json({ message: "Seat reserved successfully", train });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+// Controller to cancel a seat booking
+export const cancelSeat = async (req, res) => {
+  try {
+    const { trainId, cabinType, seatNumber } = req.body;
+
+    if (!trainId || !cabinType || !seatNumber) {
+      return res
+        .status(400)
+        .json({
+          message: "Please provide train ID, cabin type, and seat number.",
+        });
+    }
+
+    // Find the train and cabin, and update the seat's isTrue field
+    const train = await Train.findOneAndUpdate(
+      {
+        _id: trainId,
+        "cabins.cabin_type": cabinType,
+        "cabins.seats.seat_number": seatNumber,
+      },
+      { $set: { "cabins.$[cabin].seats.$[seat].is_booked": false } },
+      {
+        arrayFilters: [
+          { "cabin.cabin_type": cabinType },
+          { "seat.seat_number": seatNumber },
+        ],
+        new: true,
+      }
+    );
+
+    if (!train) {
+      return res
+        .status(404)
+        .json({ message: "Train, cabin, or seat not found" });
+    }
+
+    res.status(200).json({ message: "Seat no longer reserved", train });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
   }
 };

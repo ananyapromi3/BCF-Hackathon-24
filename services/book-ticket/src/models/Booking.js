@@ -12,9 +12,24 @@ const bookingSchema = new mongoose.Schema({
     ref: "Train",
     required: true,
   },
-  cabin_type: { type: String, required: true },
-  seat_number: { type: String, required: true },
-  booked_at: { type: Date, default: Date.now },
+  cabin_type: {
+    type: String,
+    required: true,
+  },
+  seats: [
+    {
+      type: String,
+      required: true,
+    },
+  ], // Array of seat numbers
+  total_fare: {
+    type: Number,
+    required: true,
+  }, // Total fare for all booked seats
+  booked_at: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 export const Booking = mongoose.model("Booking", bookingSchema);

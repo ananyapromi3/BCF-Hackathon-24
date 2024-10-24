@@ -6,6 +6,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import paymentRoutes from './routes/payment.routes.js';
+import config from '../config.js';
 
 dotenv.config(); // Load environment variables from .env file
 
@@ -16,7 +17,7 @@ app.use(cors()); // Enable CORS for cross-origin requests
 app.use(bodyParser.json()); // Parse JSON request bodies
 
 // MongoDB connection
-const uri = process.env.DB_URI;
+const uri = config.db_uri;
 console.log("URI is: ",uri);
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('Connected to MongoDB Atlas'))

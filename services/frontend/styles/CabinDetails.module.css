@@ -1,39 +1,43 @@
 .container {
-    padding: 2rem;
-  }
-  
-  .seats {
-    display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    grid-gap: 10px;
-    margin-bottom: 2rem;
-  }
-  
-  .seat {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .available {
-    background-color: #4caf50;
-    color: white;
-  }
-  
-  .booked {
-    background-color: #f44336;
-    color: white;
-  }
-  
-  .backButton {
-    background-color: #008CBA;
-    color: white;
-    padding: 0.5rem 1rem;
-    border: none;
-    cursor: pointer;
-  }
-  
+  padding: 20px;
+}
+
+.seats {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+
+.seat {
+  width: 50px;
+  height: 50px;
+  margin: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: 1px solid #ccc;
+}
+
+.booked {
+  background-color: red;
+  color: white;
+  cursor: not-allowed;
+}
+
+.available {
+  background-color: green;
+  color: white;
+}
+
+.selected {
+  background-color: yellow;
+  color: black;
+}
+
+.bookButton, .backButton {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
