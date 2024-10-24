@@ -13,7 +13,6 @@ const bookingSchema = new mongoose.Schema({
     required: true,
   },
   cabin_type: { type: String, required: true },
-  fare: { type: Number, required: true },
   seat_number: { type: String, required: true },
   booked_at: { type: Date, default: Date.now },
 });

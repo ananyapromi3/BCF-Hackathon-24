@@ -1,10 +1,12 @@
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 import authController from "../src/controllers/auth.Controller.js";
 import User from "../src/models/User.js";
 
 // Mock the Mongoose model methods and bcrypt
 jest.mock("../src/models/User.js");
 jest.mock("bcrypt");
+jest.mock("jsonwebtoken");
 
 describe("Auth Controller", () => {
   // Test the register method
@@ -126,8 +128,12 @@ describe("Auth Controller", () => {
         password: "hashedPassword",
       };
 
+      const mockToken = "mocked-token";
+
+      // Mock the necessary calls
       User.findOne.mockResolvedValue(mockUser);
       bcrypt.compare.mockResolvedValue(true);
+      jwt.sign.mockReturnValue(mockToken); // Mock JWT token generation
 
       await authController.login(req, res);
 
@@ -136,10 +142,13 @@ describe("Auth Controller", () => {
         "password123",
         "hashedPassword"
       );
+      expect(jwt.sign).toHaveBeenCalled(); // Ensure token generation is called
       expect(res.status).toHaveBeenCalledWith(200);
       expect(res.json).toHaveBeenCalledWith({
         status: 200,
         message: "Login successful",
+        token: mockToken,
+        user: mockUser, // Include the user object in the response
       });
     });
 
@@ -180,7 +189,7 @@ describe("Auth Controller", () => {
       };
 
       User.findOne.mockResolvedValue(mockUser);
-      bcrypt.compare.mockResolvedValue(false);
+      bcrypt.compare.mockResolvedValue(false); // Simulate invalid password
 
       await authController.login(req, res);
 
@@ -192,6 +201,7 @@ describe("Auth Controller", () => {
       expect(res.json).toHaveBeenCalledWith({
         status: 400,
         message: "Invalid password",
+        user: null, // Include the 'user: null' in the expected response
       });
     });
 
