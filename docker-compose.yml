@@ -10,7 +10,7 @@ services:
       - mongo_db:/data/db
 
   app:
-    build: ./backend
+    build: ./services/backend
     ports:
       - 4000:3000
     environment:
@@ -21,7 +21,7 @@ services:
       - mongo_db
   
   frontend:
-    build: ./dockerlearn-ui
+    build: ./services/dockerlearn-ui
     ports:
       - 8080:8080
 
