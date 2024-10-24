@@ -21,7 +21,7 @@ services:
       - mongo_db
 
   login:
-    build: ./services/login
+    build: ./services/login-register
     ports:
       - 4001:3000
     environment:
@@ -33,6 +33,11 @@ services:
   
   frontend:
     build: ./services/frontend
+    ports:
+      - 4002:3000
+
+  frontend-demo:
+    build: ./services/frontend-prev
     ports:
       - 8080:8080
 

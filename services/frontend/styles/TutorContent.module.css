@@ -1,0 +1,29 @@
+.postcontentcontainer {
+  flex: 1;
+  padding: 20px;
+}
+
+.content {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 20px;
+}
+
+.profilecontentcontainer {
+  background-color: blue;
+  color: white;
+  flex: 1;
+  padding: 20px;
+}
+
+.tuitionscontentcontainer {
+  background-color: purple;
+  flex: 1;
+  padding: 20px;
+}
+
+.postscontentcontainer {
+  background-color: purple;
+  flex: 1;
+  padding: 20px;
+}

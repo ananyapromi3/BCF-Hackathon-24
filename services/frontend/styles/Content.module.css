@@ -1,0 +1,20 @@
+.contentcontainer {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .content {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 20px;
+  }
+  .profilecontentcontainer {
+    background-color: blue;
+    flex: 1;
+    padding: 20px;
+  }
+  .tutorcontentcontainer{
+    background-color: purple;
+    flex: 1;
+    padding: 20px;
+  }

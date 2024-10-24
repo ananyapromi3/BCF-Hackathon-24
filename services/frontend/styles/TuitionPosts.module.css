@@ -1,0 +1,340 @@
+.tuitionpostscontainer {
+    display: flex;
+    font-family: 'Poppins', Helvetica, sans-serif;
+    --darkcolor: #2E0A24;
+    --shadowcolor:rgba(46, 10, 36, 0.403);
+    --pcolor: #FB8F3B;
+    --ocolor: #FFB46E;
+    --scolor: #FFE2C4;
+    --wcolor: #FFFCF5;
+    --grcolor: linear-gradient(90deg, rgb(28, 192, 145) 0%,#3edd83 100%);
+    --gr2color: rgb(71, 212, 139);
+    --r2color: rgb(255, 111, 111);
+    --rcolor: linear-gradient(90deg,rgb(233, 53, 59) 0%,#f85c5c 100%);
+
+    --otransition: linear-gradient(120deg,  rgb(247, 125, 91)0%, rgba(255, 169, 82, 0.904) 100%);
+    --o2transition: linear-gradient(90deg, rgba(255,193,116,1) 0%, rgba(255,215,171,1) 100%);
+    --beigetransition: linear-gradient(90deg, #fff9f0 0%,#ffe8cf 100%);
+
+    background-color: bisque;
+    background: linear-gradient(90deg, #fff8e9 0%,#e2d6cd 100%);
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    
+}
+  
+
+.container h2{
+  font-family: 'Montserrat', Helvetica, sans-serif;
+  font-weight: 800;
+}
+
+
+.filterwrapper {
+    display: flex;
+    flex-direction: row; /* Stack handle and container vertically */
+    margin-top: 80px;
+    /* background-color: sandybrown; */
+  }
+
+
+ .filtercontainer {
+    position: sticky;
+    top: 0;
+    height: 94vh;
+    overflow-y: auto;
+    background-color: var(--wcolor);
+    width: 375px; /* Adjust this to your desired open width */
+   
+    transition: ease-out 0.5s width 0.3s; /* Add a transition effect for smooth opening/closing */
+  }
+
+  .filtercontainer.closed {
+    width: 0;
+    overflow: hidden;
+  }
+  
+  .filterhandle {
+        height: 30px;
+        width: 30px;
+        border-radius: 0 20px 20px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: black;
+        font-size: 20px;
+
+        /* position: relative;
+        top: 50px; */
+
+
+        cursor: pointer;
+        background-color: var(--wcolor);
+        padding: 8px;
+        text-align: center;
+        transition: background-color 0.3s;
+        
+
+  }
+
+
+
+.filterdetails{
+    padding: 20px;
+}
+
+.filterdetails h2{
+  font-family: 'Montserrat', Helvetica, sans-serif;
+    font-weight: 800;
+}
+
+
+
+.fieldcontainer1 {
+    display: flex;
+    margin-bottom: 10px;
+    align-items: center;
+  }
+  
+  .filtername {
+    flex: 1;
+  }
+  
+  .filtervalues {
+    flex: 2;
+  }
+  
+  .filtername label,
+  .filtervalues input,
+  .filtervalues select {
+    width: 100%;
+  }
+  
+    /* TO CHANGE THE INPUT FIELDS */
+
+  .filtervalues input,
+  .filtervalues select {
+    padding: 5px;
+
+    background-color:rgba(221, 144, 88, 0.239) ;
+    outline: none;
+    border: solid 3px   transparent;
+    border-radius: 15px;
+  }
+
+
+
+.sortorder select{
+    color: var(--wcolor);
+    background-color:var(--pcolor);
+    outline: none;
+    padding: 2%;
+    border:  3px   var(--wcolor);
+    border-radius: 15px;
+    margin-left: 20px;
+
+}
+.sortorder option{
+    background-color: var(--wcolor);
+    color: black;
+}
+
+.sortorder option:hover{
+    background-color: var(--pcolor);
+}
+
+
+
+
+
+
+
+
+
+
+  .postscontainer {
+    flex: 2;
+    display: flex;
+    justify-content: center;
+    text-align: left;
+
+
+    margin-top: 100px;
+    padding: 20px;
+    height: auto;
+    overflow-y: auto;
+    /* background-color: aqua; */
+  }
+  
+  .postscontainer h2{
+    font-size: 40px;
+    font-family: 'Montserrat', Helvetica, sans-serif;
+    font-weight: 800;
+  }
+  
+  
+  .filterinput {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .tuitionpostslist {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 50px;
+    padding-bottom: 100px;
+  }
+  
+
+
+
+  .postbox {
+    background-color: var(--wcolor);
+    background: linear-gradient(90deg, #fff9f0 40%,#ffe8cf 100%);
+    border-radius: 20px;
+    box-shadow: 6px 6px 10px -1px rgba(0,0,0,0.15);
+    width: 65rem;
+
+
+    display: flex;
+    align-items: center;
+    position: relative;
+    transition: transform 0.5s;
+  }
+
+  .postbox:hover {
+    transform: scale(1.05); /* Zoom in by 5% on hover */
+  }
+
+
+
+  .tuitionimgcontainer{
+    /* background-color: #F7931E; */
+    border-radius: 20px 0px 0px 20px;
+    margin-right: 50px;
+    display: flex;
+    mask-image: linear-gradient(to left, transparent 0%, black 40%);
+
+    overflow: hidden;
+
+    width: 400px; 
+    height: 400px; 
+  }
+
+  
+
+  .tuitionimg{
+    /* height: 400px; */
+    position: relative;
+    border-radius: 20px 0px 0px 20px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+    
+    
+  }
+
+
+  .tuitionimg:hover {
+    transform: scale(1.05); /* Zoom in by 5% on hover */
+
+  }
+
+
+
+  
+  .tuitiondetails{
+    height: 85%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+
+
+
+    .fieldcontainer {
+        display: flex;
+        align-items: center;
+        margin-bottom: -18px; 
+    }
+
+    .fieldname {
+        font-weight: bold;
+        width: 200px; 
+        margin-right: 0px; 
+    }
+
+     
+    .fieldvalue {
+        flex-grow: 1; 
+    }
+
+
+            .Name {
+                font-weight: bold;
+                font-size: 25px;
+                margin-bottom: 5px;
+                margin-top: 5px;
+            }
+
+            .Type{
+                font-weight: bold;
+                font-size: 14px;
+                border: solid 2px var(--pcolor);
+                color: var(--pcolor);
+                border-radius: 15px;
+                padding: 1% 5%;
+
+            }
+
+            .Class{
+                font-size: 18px;
+                margin-bottom: 5px;
+                color: salmon;
+            }
+
+            .Date {
+                font-weight: normal;
+                color: hsl(14, 74%, 49%);
+            }
+
+
+
+
+  .tuitionpostbtn{
+    display: inline-block;
+    padding: 0.7vw;
+    padding-inline: 3vw;
+    position: absolute;
+    bottom: 0;
+    left: 40%;
+
+    background:  var(--otransition);
+        box-shadow: 0px 2px 2px  var(--shadowcolor);
+        color: var(--wcolor);
+    border: none;
+    border-radius: 15px;
+    font-size: 0.9vw;
+    font-weight: 600;
+    
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .tuitionpostbtn:hover{
+    background:  var(--wcolor);
+    color: var(--pcolor);
+    box-shadow:0px 2px 10px  var(--shadowcolor);
+    transform: translateY(-2px);
+}
+
+.tuitionpostbtn:active {
+    transform: translateY(1px);
+    box-shadow: none;
+    }  

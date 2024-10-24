@@ -1,0 +1,245 @@
+/* styles.css */
+
+  
+  .menucontainer {
+
+    font-family: 'Poppins', Helvetica, sans-serif;
+    --pcolor: #F7931E;
+    --wcolor: aliceblue;
+    z-index: 9999;
+
+
+    position: fixed;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* padding-inline: 4vw; */
+    gap: 0.5vw;
+
+    top: 0;
+    width: 100%;
+    height: 8vh;
+/* 
+    background: rgba(182, 198, 206, 0.14);
+    backdrop-filter: blur(7.7px);
+    border-radius: 0 0 30px 30px;
+    box-shadow: 3px 3px 30px hsla(234, 21%, 38%, 0.377); */
+    
+    /* background-color: #F7931E; */
+
+    border-radius: 0 0 30px 30px;
+    background: linear-gradient(108.5deg,  rgba(231, 69, 54, 0.82) 11.2%, rgba(244, 147, 62, 0.82)68%);
+    box-sizing: border-box;
+    /* border-bottom: solid 6px rgba(107, 70, 57, 0.664); */
+    color: aliceblue;
+
+
+
+  }
+
+  /* .menucontainer::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 0 0 30px 30px;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px );
+      background-size: 0.5px 0.5px;
+      opacity: 0.5;
+  }
+ */
+
+
+  .menulogo{
+    /* background-color: aqua; */
+    width: 12vw;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .menulogo img{
+    height: 5.8vh;
+  }
+
+  
+  .menu {
+    width: 88vw;
+    height: 100%;
+    
+    display: flex;
+    align-items: center;
+    /* background-color: coral; */
+ }
+
+  
+  .menu ul {
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    width:max-content;
+
+    list-style: none;
+    position: relative;
+
+    
+    
+    /* gap: 0vw; */
+    /* position: absolute; */
+    /* background-color: aquamarine; */
+  }
+
+
+  
+  .menu li {
+
+    cursor: pointer;
+    font-size: 0.72vw;
+    font-weight: 600;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    padding: 1.2vh 1.2vw;
+    /* background-color: red; */
+    transition: background-color 0.3s, transform 0.3s, color 0.3s;
+    z-index: 1;
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    gap: 10px;
+
+  }
+
+  .icon{
+    font-size: 15px;
+    
+  }
+
+
+  .menu li:hover {
+    background-color: rgba(233, 248, 255, 0.91);
+    /* background: linear-gradient(-60deg, salmon 0%,  rgb(255, 120, 23) 80%); */
+    border: none;
+    color: rgb(28, 33, 38);
+    border-radius: 10px;
+    padding: 1.2vh 1.2vw;
+    box-sizing: border-box;
+    transform: translateY(5px);
+    /* transform: scale(1.1); */
+  }
+
+
+
+
+.subOptionsContainer{
+  width: auto;
+  position: absolute;
+  top: calc(100%); /* Position the sub-options below the main menu item */
+  left: calc(0% - 0.5vh);
+
+  /* background-color: cadetblue; */
+  height: auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+.subOptions {
+  position: relative;
+  /* top: calc(100% + 1vh);
+  left: calc(0% - 4vh); */
+
+  /* background-color: aqua; */
+
+
+  padding: 5px;
+  
+  list-style: none; 
+  /* width: 20vw;
+  height: 10vh; */
+  z-index: 10;
+  display: none; /* Ensure the sub-menu appears above other content */
+}
+
+.subOptionsContainer li{
+  width: 6.5vw;
+  background-color: coral;
+  color: aliceblue;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+  margin: 6px;
+  text-align: center;
+  padding: 1.2vh 1.2vw;
+
+  border: 2px solid transparent;
+  border-radius: 10px;
+
+  cursor: pointer;
+  /* display: block; */
+
+}
+
+.subOptionsContainer li:hover {
+  width: 9.2vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background-color: aliceblue; /* Highlight the option on hover */
+  color: black;
+  margin: 6px;
+  border-radius: 10px;
+  text-align: center;
+  padding: 1.2vh 1.2vw;
+
+
+}
+
+
+  
+  
+.requestTutor {
+  position: relative; 
+  /* background-color: chartreuse; */
+}
+.requestTutor:hover .subOptions {
+  display: block; /* Display the sub-options on hover */
+}
+
+
+
+.notificationCount {
+  background-color: red;
+  color: white;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 50%;
+  margin-left: 5px;
+}
+
+.activeOption{
+  background-color: coral;
+  border-radius: 10px;
+  padding: 1vh;
+  color: aliceblue;
+
+  transition: ease 0.3s, color 0.3s;
+}

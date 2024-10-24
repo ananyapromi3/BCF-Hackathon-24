@@ -1,0 +1,299 @@
+/* myTuitions.module.css */
+.container {
+  font-family: 'Poppins', Helvetica, sans-serif;
+  --darkcolor: #2E0A24;
+  --shadowcolor:rgba(46, 10, 36, 0.403);
+  --pcolor: #FB8F3B;
+  --ocolor: #FFB46E;
+  --scolor: #FFE2C4;
+  --wcolor: #FFFCF5;
+  --grcolor: linear-gradient(90deg, rgb(28, 192, 145) 0%,#3edd83 100%);
+  --gr2color: rgb(71, 212, 139);
+  --r2color: rgb(255, 111, 111);
+  --rcolor: linear-gradient(90deg,rgb(233, 53, 59) 0%,#f85c5c 100%);
+
+  --otransition: linear-gradient(120deg,  rgb(247, 125, 91)0%, rgba(255, 169, 82, 0.904) 100%);
+  --beigetransition: linear-gradient(90deg, #fff9f0 0%,#ffe8cf 100%);
+
+;
+
+  display: flex;
+
+  width: 100%;
+  height: 100%;
+    position: absolute;
+
+  background: linear-gradient(60deg, rgb(253, 231, 204) 0%, rgb(255, 251, 248) 100%);
+}
+
+
+.container h2{
+  font-family: 'Montserrat', Helvetica, sans-serif;
+  font-weight: 800;
+  font-size: 30px;
+}
+
+
+.wrapper {
+  display: flex;
+  /* background-color: cornflowerblue; */
+
+  width: 100%;
+  margin: 50px;
+  margin-top: 100px;
+}
+
+.leftColumn {
+  flex: 1;
+  /* background-color: #F7931E; */
+  border-radius: 20px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+
+}
+
+.leftwrapper{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 40px;
+
+  width: 90%;
+  height: 90%;
+  border-radius: 20px;
+  
+  background: linear-gradient(to top, rgba(37, 19, 19, 0.327) -20%,  rgba(244, 192, 152, 0.243) 10%), linear-gradient(to bottom, rgba(37, 19, 19, 0.327) -20%,  transparent 10%);
+  margin-top: 20px;
+  margin-bottom: 40px;
+  padding-block: 20px;
+}
+
+
+.tuitionCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  margin-inline: auto;
+
+  width: 200px;
+  height: 200px;
+
+  background-color: rgb(43, 47, 54);
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.333);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.tuitionCard p{
+  position: absolute;
+  bottom: 0%;
+
+  color: aliceblue;
+  font-weight: bold;
+  font-size: 19px;
+  font-family: 'Montserrat', Helvetica, sans-serif;
+  font-weight: 800;
+
+
+}
+
+.tuitionCard:hover {
+  background-color: var(--wcolor); /* Add background color on hover */
+  color: var(--darkcolor);
+}
+
+.tuitionCard:hover p{
+  color: var(--darkcolor);
+}
+
+
+.smolimgcontainer{
+  /* background-color: #F7931E; */
+  border-radius: 10px;
+  display: flex;
+  mask-image: linear-gradient(to top, transparent 0%, black 50%);
+
+  overflow: hidden;
+
+  width: 200px; 
+  height: 200px; 
+}
+
+.smolimg{
+  position: relative;
+    border-radius: 10px ;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+
+
+
+
+
+
+.rightColumn {
+  flex: 2;
+  background-color: transparent;
+
+  border-radius: 20px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+
+.selectedtuition {
+  background: var(--beigetransition);
+  border-radius: 20px;
+  box-shadow: 6px 6px 20px  rgba(0, 0, 0, 0.289);
+  width: 60rem;
+  height: 400px;
+
+
+  display: flex;
+  align-items: center;
+  position: relative;
+  transition: transform 0.5s;
+}
+
+.selectedimgcontainer{
+  background-color: #F7931E;
+  border-radius: 20px 0px 0px 20px;
+  margin-right: 50px;
+  display: flex;
+  mask-image: linear-gradient(to left, transparent 0%, black 40%);
+
+  overflow: hidden;
+
+  width: 400px; 
+  height: 400px; 
+}
+
+.selectedimg {
+    position: relative;
+    border-radius: 20px 0px 0px 20px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+
+.selecteddetails{
+ height: 85%;
+ width: 50%;
+ display: flex;
+ flex-direction: column;
+ position: relative;
+}
+
+
+    .studentname{
+      font-size: 30px;
+      font-weight: bolder;
+
+      font-family: 'Montserrat', Helvetica, sans-serif;
+      font-weight: 800;
+    }
+
+    .fieldcontainer {
+      display: flex;
+      align-items: center;
+      margin-bottom: -18px; 
+    }
+
+    .fieldname {
+      font-weight: bold;
+      width: 200px; 
+      margin-right: 0px; 
+    }
+
+
+    .fieldvalue {
+      flex-grow: 1; 
+    }
+
+
+    .cancelbtn {
+      display: inline-block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin: 20px;
+
+      width: 30px;
+      height: 30px;
+
+      place-content: center;
+  
+      background:  var(--rcolor);
+        box-shadow: 0px 2px 2px  var(--shadowcolor);
+        color: var(--wcolor);
+      border: none;
+      border-radius: 50px;
+      font-size: 18px;
+  
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      z-index: 5;
+  
+    }
+
+    .cancelbtn:hover{
+      background:  var(--r2color);
+      color: var(--wcolor);
+      box-shadow:0px 2px 2px  var(--shadowcolor);
+      transform: translateY(-2px);
+  }
+
+  .cancelbtn:active {
+      transform: translateY(1px);
+      box-shadow: none;
+      }    
+
+
+
+.myTuitionsHeading {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+
+
+.selectedTuition {
+  background-color: #f0f0f0; /* Add background color for selected tuition */
+}
+
+
+
+
+
+
+.selectTuitionText {
+
+  text-align: center;
+
+  font-size: 25px;
+  font-weight: 500;
+  color: var(--darkcolor);
+}
+
+
+
+.studentImage{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}

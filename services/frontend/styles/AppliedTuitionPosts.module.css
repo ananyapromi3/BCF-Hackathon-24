@@ -1,0 +1,181 @@
+
+.container {
+    font-family: 'Poppins', Helvetica, sans-serif;
+    --pcolor: #F7931E;
+    --wcolor: aliceblue;
+
+
+    position: absolute;
+    left: 0;
+
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: bisque;
+    background: linear-gradient(90deg, #fff8e9 0%,#e2d6cd 100%);
+    overflow-x: hidden;
+
+    height: 100vh;
+    width: 100vw;
+
+  }
+  
+
+  .separator{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    /* background-color: aquamarine;  */
+    margin-top: 80px;
+  }
+
+  .container h2{
+    font-weight: bolder;
+    font-size: 35px;
+    margin-bottom: 70px;
+    margin-top: 50px;
+  }
+  
+  .postcardwrapper{
+    position: relative;
+
+    width: 90%;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 70px;
+    column-gap: 70px;
+
+    /* background-color: #F7931E; */
+  }
+
+
+  .postcard {
+    position: relative;
+    background-color: antiquewhite;
+
+
+    border-radius: 20px;
+    box-shadow: 6px 6px 10px -1px rgba(0,0,0,0.15);
+    width: 100%;
+    height: 300px;
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    transition: transform 0.5s;
+  }
+
+  .postcard:hover {
+    transform: scale(1.05); /* Zoom in by 5% on hover */
+  }
+  
+  .postimgcontainer{
+    background-color: #F7931E;
+    border-radius: 20px 0px 0px 20px;
+    margin-right: 50px;
+    display: flex;
+    mask-image: linear-gradient(to left, transparent 0%, black 40%);
+
+    overflow: hidden;
+
+    width: 300px; 
+    height: 300px; 
+  }
+
+
+  .postimg {
+    position: relative;
+    border-radius: 20px 0px 0px 20px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+  }
+
+  .postimg:hover {
+    transform: scale(1.05); /* Zoom in by 5% on hover */
+
+  }
+  
+  .postdetails {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    text-align: left;
+    width: 55%;
+  }
+  
+
+
+    .fieldcontainer {
+        display: flex;
+        align-items: center;
+        margin-bottom: -16px; 
+    }
+
+    .fieldname {
+        font-weight: bold;
+        width: 130px; 
+        margin-right: 0px; 
+    }
+
+     
+    .fieldvalue {
+        flex-grow: 1; 
+    }
+
+
+
+      .Name {
+        font-weight: bold;
+        font-size: 27px;
+        margin-bottom: 5px;
+        margin-top: 5px;
+    }
+
+    .Type{
+        font-weight: bold;
+        font-size: 14px;
+        border: solid 2px var(--pcolor);
+        color: var(--pcolor);
+        border-radius: 15px;
+        padding: 1% 5%;
+
+     }
+
+    .Class{
+        font-size: 18px;
+        margin-bottom: 5px;
+        color: var(--pcolor);
+    }
+
+
+
+
+  .cancelbtn {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 20px;
+    place-content: center;
+
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 5px 8px;
+    border: none;
+    border-radius: 50px;
+    font-size: 18px;
+
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    z-index: 2;
+
+  }
+  
