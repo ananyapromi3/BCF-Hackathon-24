@@ -147,40 +147,73 @@ const CabinDetails = () => {
 
   return (
     <div className={styles.container}>
-      <h1>
-        {trainData.train_name} - {cabinType} Cabin
+      <h1 className={styles.heading}>
+        {trainData.name} - {cabinType} Cabin
       </h1>
 
-      <div className={styles.seats}>
-        {selectedCabin.seats.map((seat, index) => (
-          <div
-            key={seat.seat_number}
-            className={`${styles.seat} ${
-              seat.is_booked
-                ? styles.booked
-                : selectedSeats.includes(seat.seat_number)
-                ? styles.selected
-                : styles.available
-            }`}
-            onClick={() =>
-              // seat.is_booked
-              // ? handleCancelBooking(seat.seat_number)
-              // :
-              handleSeatClick(seat.seat_number)
-            }
-          >
-            {seat.seat_number}
+      {/* Card for Seat Arrangement Section */}
+      <div className={styles.card}>
+        <div className={styles.trainLayout}>
+          {/* Left section of seats */}
+          <div className={styles.seatSection}>
+            {selectedCabin.seats.map((seat, index) => (
+              <div
+                key={seat.seat_number}
+                className={`${styles.seat} ${
+                  seat.is_booked
+                    ? styles.booked
+                    : selectedSeats.includes(seat.seat_number)
+                    ? styles.selected
+                    : styles.available
+                }`}
+                onClick={() =>
+                  // seat.is_booked
+                  // ? handleCancelBooking(seat.seat_number)
+                  // :
+                  handleSeatClick(seat.seat_number)
+                }
+              >
+                {seat.seat_number}
+              </div>
+            ))}
           </div>
-        ))}
+          {/* Aisle */}
+          {/* <div className={styles.aisle}></div> */}
+          {/* Right section of seats */}
+          {/* <div className={styles.seatSection}>
+            {selectedCabin.seats.map((seat, index) => (
+              <div
+                key={seat.seat_number}
+                className={`${styles.seat} ${
+                  seat.is_booked
+                    ? styles.booked
+                    : selectedSeats.includes(seat.seat_number)
+                    ? styles.selected
+                    : styles.available
+                }`}
+                onClick={() =>
+                  // seat.is_booked
+                  // ? handleCancelBooking(seat.seat_number)
+                  // :
+                  handleSeatClick(seat.seat_number)
+                }
+              >
+                {seat.seat_number}
+              </div>
+            ))}
+          </div> */}
+        </div>
+
+        {/* Buttons at the bottom of the card */}
+        <div className={styles.buttonContainer}>
+          <button className={styles.bookButton} onClick={handleBookTicket}>
+            Book Ticket
+          </button>
+          <button className={styles.backButton} onClick={handleBackClick}>
+            Back
+          </button>
+        </div>
       </div>
-
-      <button className={styles.bookButton} onClick={handleBookTicket}>
-        Book Selected Seats
-      </button>
-
-      <button className={styles.backButton} onClick={handleBackClick}>
-        Back
-      </button>
     </div>
   );
 };

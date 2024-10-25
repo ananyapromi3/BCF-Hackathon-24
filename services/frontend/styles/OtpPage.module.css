@@ -1,19 +1,99 @@
+/* Main container styling */
 .container {
-    padding: 20px;
-    text-align: center;
-  }
-  
-  .otpInput {
-    width: 200px;
-    padding: 10px;
-    margin-top: 20px;
-    font-size: 16px;
-  }
-  
-  .submitButton {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 98vh;
+  background: linear-gradient(135deg, hsl(210, 36%, 96%), #d9e4ec); /* Light gradient */
+  font-family: "Poppins", sans-serif;
+}
+
+/* Illustration styling */
+.illustration {
+  width: 600px; /* Adjust width as needed */
+  margin-right: 220px; /* Space between illustration and card */
+}
+
+/* Card styling */
+.card {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  width: 400px;
+  text-align: center;
+}
+
+/* Heading styling */
+.heading {
+  font-size: 2rem;
+  color: #313131;
+  margin-bottom: 30px;
+}
+
+/* Selected seats styling */
+.seats {
+  font-size: 1.3rem;
+  margin-bottom: 40px;
+  color: #0ba574;
+}
+
+/* OTP prompt styling */
+.otpPrompt {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+/* OTP input styling */
+.otpInput {
+  width: 60%;
+  padding: 20px;
+  border: 2px solid #d7d7d7;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  transition: border-color 0.3s ease;
+}
+
+.otpInput:focus {
+  outline: none;
+  border-color: #088a56; /* Darker shade on focus */
+}
+
+/* Submit button styling */
+.submitButton {
+  background-color: #0ba574;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-bottom: 10px;
+}
+
+.submitButton:hover {
+  background-color: #088a56;
+  transform: scale(1.05);
+}
+
+.submitButton:focus {
+  outline: none;
+}
+
+/* Timer styling */
+.timer {
+  font-size: 1.1rem;
+  color: #ff4d4d; /* Red color for urgency */
+  margin-top: 15px;
+}
+
+/* Expired message styling */
+.expiredMessage {
+  color: red;
+  font-weight: bold;
+  text-align: center;
+}

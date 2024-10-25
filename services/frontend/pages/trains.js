@@ -6,6 +6,7 @@ import styles from "../styles/Trains.module.css";
 const Trains = () => {
   const router = useRouter();
   const { userId, from, to, date, trains } = router.query; // Retrieve train data from router query
+  console.log("Trains data:", trains);
 
   const [fetchedTrains, setFetchedTrains] = useState([]);
 
@@ -43,35 +44,74 @@ const Trains = () => {
         Back
       </button>
 
-      <h1>Available Trains</h1>
+      <h1 className={styles.heading}>Available Trains</h1>
+      <p className={styles.selectedDate}>Selected Date: {date}</p>
 
       {fetchedTrains.length > 0 ? (
         fetchedTrains.map((train) => (
           <div key={train._id} className={styles.train}>
-            <h2>{train.train_name}</h2>
-            <p>From: {train.route.from}</p>
-            <p>To: {train.route.to}</p>
-            <p>Date: {train.date}</p>
-            <h3>Cabins Available:</h3>
-            {train.cabins.map((cabin, index) => (
-              <div key={index} className={styles.cabin}>
-                <p>
-                  {cabin.cabin_type}:{" "}
-                  {cabin.seats.filter((seat) => !seat.is_booked).length}{" "}
-                  available seats
-                </p>
-                <button
-                  className={styles.button}
-                  onClick={() => handleCabinClick(train._id, cabin.cabin_type)}
-                >
-                  View
-                </button>
+            <div className={styles.trainContent}>
+              {/* Train main details */}
+              <div className={styles.trainMain}>
+                <h2 className={styles.trainName}>{train.train_name}</h2>
+
+                {/* Departure and Arrival section */}
+                <div className={styles.trainSchedule}>
+                  <div className={styles.scheduleHeader}>
+                    <span className={styles.scheduleLabel}>Departure</span>
+                    <span className={styles.scheduleLabel}>Arrival</span>
+                  </div>
+
+                  <div className={styles.scheduleDetails}>
+                    <span className={styles.city}>{train.route.from}</span>
+                    <span className={styles.arrow}>
+                      ----------------------&gt;
+                    </span>
+                    <span className={styles.city}>{train.route.to}</span>
+                  </div>
+
+                  <div className={styles.timeDetails}>
+                    <span className={styles.time}>{train.departure_time}</span>
+                    <span className={styles.time}>{train.arrival_time}</span>
+                  </div>
+                </div>
               </div>
-            ))}
+
+              {/* Cabin cards section */}
+              <div className={styles.trainCabins}>
+                {train.cabins.map((cabin, index) => (
+                  <div key={index} className={styles.cabinCard}>
+                    <p className={styles.cabinType}>{cabin.cabin_type} Cabin</p>
+                    <p className={styles.seatInfo}>
+                      {cabin.seats.filter((seat) => !seat.is_booked).length}/
+                      {cabin.total_seats} seats available
+                    </p>
+                    {cabin.fare[cabin.cabin_type] ? (
+                      <p className={styles.cabinFare}>
+                        <span className={styles.fareLabel}>Fare:</span>{" "}
+                        {cabin.fare[cabin.cabin_type]} BDT
+                      </p>
+                    ) : (
+                      <p className={styles.cabinFare}>Fare not available</p>
+                    )}
+                    <button
+                      className={styles.bookButton}
+                      onClick={() =>
+                        handleCabinClick(train._id, cabin.cabin_type)
+                      }
+                    >
+                      View Cabin
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         ))
       ) : (
-        <p>No trains available for the selected route and date.</p>
+        <p className={styles.noTrains}>
+          No trains available for the selected route and date.
+        </p>
       )}
     </div>
   );

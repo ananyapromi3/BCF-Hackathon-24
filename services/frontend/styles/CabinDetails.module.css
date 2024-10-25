@@ -1,43 +1,143 @@
+/* Main container styling */
 .container {
-  padding: 20px;
-}
-
-.seats {
   display: flex;
-  flex-wrap: wrap;
-  margin: 20px 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  background: linear-gradient(135deg, #f0f4f8, #d9e4ec); /* Light gradient */
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
 }
 
-.seat {
+/* Heading styling */
+.heading {
+  font-size: 2rem;
+  color: #0ba574;
+  background-color: #eaf6f1;
+  padding: 10px 50px;
+  border-radius: 10px;
+  border: solid 2px #0ba574;
+  font-weight: 700;
+  margin-bottom: 50px;
+}
+
+/* Card styling */
+.card {
+  background: white; /* Card background */
+  border-radius: 15px;
+  padding: 0px;
+  padding-block: 50px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 25%;
+}
+
+/* Train layout for the seat configuration */
+.trainLayout {
+  display: flex;
+  justify-content: center;
+  gap: 15px; /* Aisle gap */
+  margin-bottom: 50px;
+  margin-top: 20px;
+}
+
+/* Seat section (left and right) */
+.seatSection {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two seats per row in each section */
+  gap: 15px;
+}
+
+/* Aisle styling */
+.aisle {
   width: 50px;
-  height: 50px;
-  margin: 5px;
+}
+
+/* Seat styling */
+.seat {
+  background-color: #fff;
+  border: 2px solid #cccccc73;
+  border-radius: 10px;
+  width: 60px;
+  height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  border: 1px solid #ccc;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.booked {
-  background-color: red;
-  color: white;
-  cursor: not-allowed;
+.seat:hover {
+  transform: scale(1.10);
+  background-color: rgb(192, 243, 218);
 }
 
+/* Available seat */
 .available {
-  background-color: green;
+  background-color: #eaf6f1;
+}
+
+/* Booked seat */
+.booked {
+  background-color: #ff4d4d;
+  cursor: not-allowed;
   color: white;
 }
 
+/* Selected seat */
 .selected {
-  background-color: yellow;
-  color: black;
+  background-color: #0ba574;
+  color: white;
 }
 
-.bookButton, .backButton {
+/* Button container styling */
+.buttonContainer {
+  display: flex;
+  justify-content: space-between;
   margin-top: 20px;
-  padding: 10px 20px;
-  font-size: 16px;
+  margin-inline: 50px;
+  gap: 30px;
+}
+
+/* Book button */
+.bookButton {
+  background-color: #0ba574;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
   cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  flex: 1; /* Equal sizing */
+  margin-right: 10px; /* Space between buttons */
+}
+
+.bookButton:hover {
+  background-color: #088a56;
+  transform: scale(1.05);
+}
+
+.bookButton:focus {
+  outline: none;
+}
+
+/* Back button */
+.backButton {
+  background-color: #e8e8e8;
+  color: black;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  flex: 1; /* Equal sizing */
+}
+
+.backButton:hover {
+  background-color: #b6b6b6;
+  transform: scale(1.05);
+  color: white;
 }

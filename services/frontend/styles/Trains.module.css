@@ -1,32 +1,221 @@
 .container {
-    padding: 2rem;
-  }
-  
-  .backButton {
-    background-color: #f00;
-    color: #fff;
-    padding: 0.5rem 1rem;
-    border: none;
-    cursor: pointer;
-    margin-bottom: 1rem;
-  }
-  
-  .train {
-    border: 1px solid #ccc;
-    padding: 1rem;
-    margin-bottom: 1rem;
-    border-radius: 5px;
-  }
-  
-  .cabin {
-    margin: 1rem 0;
-  }
-  
-  .button {
-    background-color: #008CBA;
-    color: white;
-    padding: 0.5rem 1rem;
-    border: none;
-    cursor: pointer;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background: linear-gradient(135deg, #f0f4f8, #d9e4ec); /* Light gradient background */
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Back Button */
+.backButton {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: #f6f6f6;
+  color: rgb(26, 26, 26);
+  border: solid 2px rgb(173, 173, 173);
+  padding: 10px 20px;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.backButton:hover {
+  background-color: #088a56;
+  transform: scale(1.05);
+}
+
+/* Heading */
+.heading {
+  font-size: 2.5rem;
+  color: #181c1b;
+  margin-bottom: 10px;
+}
+
+/* Date Info */
+.selectedDate {
+  font-size: 1.3rem;
+  color: #0ba574;
+  background-color: #eaf6f1;
+  padding: 10px 50px;
+  border-radius: 10px;
+  border: dashed 2px #0ba574;
+  font-weight: 500;
+  margin-bottom: 50px;
+}
+
+/* Train card container */
+.train {
+  background-color: #fff;
+  padding: 50px;
+  border-radius: 20px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  width: 70%; /* Increased width of train card */
+}
+
+.train:hover {
+  transform: translateY(-5px); /* Lift the card on hover */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2), 
+              0 8px 30px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}
+
+.trainContent {
+  display: flex;
+  justify-content: space-between; /* Separate main content and cabin cards */
+  align-items: flex-start;
+}
+
+/* Train main details */
+/* Train Main Section */
+.trainMain {
+  margin-bottom: 30px;
+  width: 45%;
+}
+
+/* Train name styling */
+.trainName {
+  position: relative;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  bottom: 20px;
+}
+
+/* Departure and Arrival section */
+.trainSchedule {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.scheduleHeader {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.scheduleLabel {
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: #0ba574;
+}
+
+.scheduleDetails {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.city {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.arrow {
+  font-size: .5rem;
+  color: #0ba574;
+  flex-grow: 1;
+  text-align: center;
+}
+
+/* Time details beneath cities */
+.timeDetails {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.time {
+  font-size: 1.2rem;
+  color: #555;
+  font-weight: 500;
+}
+
+
+/* Cabin details (right side) */
+.trainCabins {
+  display: flex;
+  gap: 25px; /* Space between cabin cards */
+  flex-wrap: nowrap; /* Horizontal stacking of cabin cards */
+}
+
+.cabinCard {
+  background: #fff;
+  padding: 10px; /* Reduced padding */
+  border-radius: 15px;
+  border: solid 2px #0ba5744e;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  width: 160px; /* Shorter cabin cards */
+  height: 250px; /* Shorter height for compact design */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cabinCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.108), 0 6px 20px rgba(0, 0, 0, 0.057);
+}
+
+.bookButton {
+  margin-top: auto;
+  margin-bottom: 20px;
+  background-color: #0ba574;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.bookButton:hover {
+  background-color: #088a56;
+  transform: scale(1.1);
+}
+
+.bookButton:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.cabinType {
+  font-weight: bold;
+  margin-bottom: 5px;
+  font-size: 1.1rem;
+}
+
+.seatInfo {
+  color: #3d3d3d;
+  margin-bottom: 5px;
+}
+
+.cabinFare {
+  color: #0ba574;
+  font-weight: 600;
+}
+
+/* Arrow Style */
+.arrow {
+  font-size: 1.5rem;
+  color: #0ba574;
+}
+
+/* No trains message */
+.noTrains {
+  font-size: 1.5rem;
+  color: #888;
+}

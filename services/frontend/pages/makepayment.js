@@ -52,46 +52,51 @@ const MakePayment = () => {
     // }
   };
 
+  const handleMethodSelection = (method) => {
+    setPaymentMethod(method);
+  };
+
   return (
     <div className={styles.container}>
-      <h1>Make Payment</h1>
-      <p>Total Fare: {totalFare} BDT</p>
+      <div className={styles.card}>
+        <h1 className={styles.heading}>Make Payment</h1>
+        <p className={styles.totalFare}>
+          Total Fare: <strong>{totalFare} BDT</strong>
+        </p>
 
-      <div className={styles.paymentMethods}>
-        <label className={styles.labelclass}>
-          <input
-            type="radio"
-            value="CreditCard"
-            checked={paymentMethod === "CreditCard"}
-            onChange={() => setPaymentMethod("CreditCard")}
-          />
-          Credit Card
-        </label>
+        <div className={styles.paymentMethods}>
+          <button
+            className={`${styles.paymentButton} ${
+              paymentMethod === "CreditCard" ? styles.active : styles.inactive
+            }`}
+            onClick={() => handleMethodSelection("CreditCard")}
+          >
+            <img src="/creditcard3.png" alt="Credit Card" />
+          </button>
 
-        <label className={styles.labelclass}>
-          <input
-            type="radio"
-            value="Bkash"
-            checked={paymentMethod === "Bkash"}
-            onChange={() => setPaymentMethod("Bkash")}
-          />
-          Bkash
-        </label>
+          <button
+            className={`${styles.paymentButton} ${
+              paymentMethod === "Bkash" ? styles.active : styles.inactive
+            }`}
+            onClick={() => handleMethodSelection("Bkash")}
+          >
+            <img src="/bkash.png" alt="Bkash" />
+          </button>
 
-        <label className={styles.labelclass}>
-          <input
-            type="radio"
-            value="Nagad"
-            checked={paymentMethod === "Nagad"}
-            onChange={() => setPaymentMethod("Nagad")}
-          />
-          Nagad
-        </label>
+          <button
+            className={`${styles.paymentButton} ${
+              paymentMethod === "Nagad" ? styles.active : styles.inactive
+            }`}
+            onClick={() => handleMethodSelection("Nagad")}
+          >
+            <img src="/nagad.png" alt="Nagad" />
+          </button>
+        </div>
+
+        <button className={styles.payButton} onClick={handlePayment}>
+          Make Payment
+        </button>
       </div>
-
-      <button className={styles.payButton} onClick={handlePayment}>
-        Make Payment
-      </button>
     </div>
   );
 };

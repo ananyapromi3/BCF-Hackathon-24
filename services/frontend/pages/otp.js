@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import styles from "../styles/OtpPage.module.css";
+import otpIllustration from "../public/otp.png";
 
 const OtpPage = () => {
   const router = useRouter();
@@ -108,21 +109,29 @@ const OtpPage = () => {
 
   return (
     <div className={styles.container}>
-      <h1>OTP Verification</h1>
-      <p>Your selected seats: {selectedSeats}</p>
-      <p>Enter the OTP sent to your email ({email}):</p>
-      <input
-        className={styles.otpInput}
-        type="text"
-        value={otp}
-        onChange={(e) => setOtp(e.target.value)}
-        placeholder="Enter OTP"
+      <img
+        src={otpIllustration.src}
+        alt="OTP Illustration"
+        className={styles.illustration}
       />
-      <button className={styles.submitButton} onClick={handleSubmit}>
-        Submit OTP
-      </button>
-
-      <p>Time remaining: {formatTime()}</p>
+      <div className={styles.card}>
+        <h1 className={styles.heading}>OTP Verification</h1>
+        <p className={styles.seats}>
+          Your selected seats: <strong>{selectedSeats}</strong>
+        </p>
+        <p className={styles.otpPrompt}>Enter the OTP sent to your phone:</p>
+        <input
+          className={styles.otpInput}
+          type="text"
+          value={otp}
+          onChange={(e) => setOtp(e.target.value)}
+          placeholder="Enter OTP"
+        />
+        <button className={styles.submitButton} onClick={handleSubmit}>
+          Submit OTP
+        </button>
+        <p className={styles.timer}>Time remaining: {formatTime()}</p>
+      </div>
     </div>
   );
 };

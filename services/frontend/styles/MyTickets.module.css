@@ -1,6 +1,103 @@
-/* styles/MyTickets.module.css */
 .container {
-    padding: 2rem;
-  }
-  
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  color: #212121; /* Text color */
+  background-color: #f5f5f5;
+  font-family: 'Poppins', sans-serif; 
+  padding: 20px 0; /* Padding for top and bottom */
+}
+
+.ticketList {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center tickets */
+  width: 80%; /* Full width */
+  gap: 50px; /* Space between tickets */
+  padding-bottom: 50px;
+}
+
+.ticket {
+  background: url('/passbg4.png') no-repeat center center; /* Add your ticket background image */
+  background-size: cover; /* Cover the card */
+  padding: 20px;
+  border-radius: 20px; /* Rounded corners */
+  width: 100%; /* Full width */
+  aspect-ratio: 3 / 1;
+  max-width: 1000px; /* Limit width */
+  color: #000; /* Text color inside ticket */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1), 
+              0 6px 20px rgba(0, 0, 0, 0.1); /* Soft shadow for a floating effect */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth animation on hover */
+  font-family: 'Courier Prime', monospace; /* Ticket font */
+}
+
+.ticket:hover {
+  transform: translateY(-10px); /* Lift the card on hover */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2), 
+              0 8px 30px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}
+
+.ticketInfo {
+  display: flex;
+  justify-content: space-between; /* Two columns layout */
+  font-size: 1.2rem; /* Base font size for ticket info */
+  width: 100%; /* Full width for columns */
+}
+
+.leftColumn {
+  flex: 1; /* Take up equal space */
+  margin-right: 20px; /* Space between columns */
+  padding-left: 15px; /* Padding to shift text right */
+}
+
+.rightColumn {
+  flex: 1; /* Take up equal space */
+}
+
+.trainName {
+  font-weight: bold;
+  font-size: 2.6rem; /* Increased font size for train name */
+  margin-bottom: 40px; /* Space below train name */
+  margin-left: 50px;
+}
+
+/* Additional ticket info styling */
+.ticketInfo p {
+  font-size: 1.6rem; /* Increased font size for additional info */
+  margin: 5px 0; /* Margin for spacing */;
+  margin-bottom: 30px;
+}
+
+/* Specific margins for paragraphs in leftColumn to prevent intersection with borders */
+.leftColumn p {
+  margin-left: 40px; /* Add left margin to paragraphs */
+}
+
+.noTickets {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border: 2px dashed #0ba574; /* Primary color dashed border */
+  border-radius: 10px;
+  background-color: rgba(0, 186, 116, 0.1); /* Light background for emphasis */
+  width: 80%; /* Limit width to fit design */
+  max-width: 600px; /* Max width for better alignment */
+  color: #212121; /* Text color */
+  font-family: 'Poppins', sans-serif; /* Consistent font */
+  margin-top: 20px; /* Space above the message */
+}
+
+.noTickets h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.noTickets p {
+  font-size: 1rem;
+  margin-top: 5px; /* Space between heading and paragraph */
+}
