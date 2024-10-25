@@ -1,9 +1,11 @@
+// pages/train/[trainId]/[cabinType].js
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import styles from "../../../styles/CabinDetails.module.css";
 
 const CabinDetails = () => {
   const router = useRouter();
+  const userId = router.query.userId;
   const { trainId, cabinType } = router.query;
 
   const [trainData, setTrainData] = useState(null);
@@ -51,6 +53,7 @@ const CabinDetails = () => {
     router.push({
       pathname: `/otp`,
       query: {
+        userId,
         trainId,
         cabinType,
         selectedSeats: JSON.stringify(selectedSeats),
@@ -59,6 +62,17 @@ const CabinDetails = () => {
   };
 
   const handleSeatClick = async (seatNumber) => {
+    setSelectedSeats((prevSelected) => {
+      if (prevSelected.includes(seatNumber)) {
+        handleCancelBooking(seatNumber);
+        return prevSelected.filter((seat) => seat !== seatNumber); // Deselect seat
+      } else {
+        handleTempBooking(seatNumber);
+        return [...prevSelected, seatNumber]; // Select seat
+      }
+    });
+  };
+  const handleTempBooking = async (seatNumber) => {
     try {
       const response = await fetch(
         `http://localhost:4003/api/trains/book-seat`,
@@ -68,7 +82,7 @@ const CabinDetails = () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            trainId, // Include the trainId in the request body
+            trainId,
             cabinType,
             seatNumber,
           }),
@@ -76,17 +90,7 @@ const CabinDetails = () => {
       );
 
       if (response.ok) {
-        const isSeatSelected = selectedSeats.includes(seatNumber);
-        console.log(response);
-
-        if (isSeatSelected) {
-          setSelectedSeats(selectedSeats.filter((seat) => seat !== seatNumber));
-        } else {
-          setSelectedSeats([...selectedSeats, seatNumber]);
-        }
-
-        // Optionally alert the user
-        // alert(`Seat ${seatNumber} has been successfully booked!`);
+        console.log("Reserved seat", seatNumber);
       } else {
         console.error("Failed to book the seat");
       }
@@ -95,7 +99,18 @@ const CabinDetails = () => {
     }
   };
 
+  // i = 0;
   const handleCancelBooking = async (seatNumber) => {
+    // i = 0;
+    // setSelectedSeats((prevSelected) => {
+    //   if (prevSelected.includes(seatNumber)) {
+    //     i = 1;
+    //     return prevSelected.filter((seat) => seat !== seatNumber); // Deselect seat
+    //   } else {
+    //     return [...prevSelected, seatNumber]; // Select seat
+    //   }
+    // });
+
     try {
       const response = await fetch(
         `http://localhost:4003/api/trains/cancel-seat`,
@@ -105,7 +120,7 @@ const CabinDetails = () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            trainId, // Include the trainId in the request body
+            trainId,
             cabinType,
             seatNumber,
           }),
@@ -113,10 +128,7 @@ const CabinDetails = () => {
       );
 
       if (response.ok) {
-        setSelectedSeats(selectedSeats.filter((seat) => seat !== seatNumber));
-
-        // Optionally alert the user
-        // alert(`Seat ${seatNumber} booking has been successfully canceled!`);
+        console.log("Canceled seat", seatNumber);
       } else {
         console.error("Failed to cancel the booking");
       }
@@ -133,41 +145,6 @@ const CabinDetails = () => {
     return <div>Loading cabin details...</div>;
   }
 
-  const seatArrangement = Array.from(
-    { length: selectedCabin.seats.length },
-    (_, i) => i + 1
-  );
-
-  // const handleBookTicket = async () => {
-  //   try {
-  //     const response = await fetch(
-  //       `http://localhost:4003/api/trains/book-seats/${trainId}`,
-  //       {
-  //         method: "POST",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //         body: JSON.stringify({
-  //           cabinType,
-  //           seats: selectedSeats,
-  //           is_booked: true, // Mark seats as booked
-  //         }),
-  //       }
-  //     );
-
-  //     if (response.ok) {
-  //       alert("Seats successfully booked!");
-  //       // Optionally, refresh or update the local state to show booked seats
-  //       setSelectedSeats([]); // Reset selected seats after booking
-  //       // Optionally fetch updated seat data if needed
-  //     } else {
-  //       console.error("Failed to book seats");
-  //     }
-  //   } catch (error) {
-  //     console.error("Error booking seats:", error);
-  //   }
-  // };
-
   return (
     <div className={styles.container}>
       <h1>
@@ -175,23 +152,24 @@ const CabinDetails = () => {
       </h1>
 
       <div className={styles.seats}>
-        {seatArrangement.map((seatNumber) => (
+        {selectedCabin.seats.map((seat, index) => (
           <div
-            key={seatNumber}
+            key={seat.seat_number}
             className={`${styles.seat} ${
-              selectedCabin.seats[seatNumber - 1].is_booked
+              seat.is_booked
                 ? styles.booked
-                : selectedSeats.includes(seatNumber)
+                : selectedSeats.includes(seat.seat_number)
                 ? styles.selected
                 : styles.available
             }`}
             onClick={() =>
-              selectedCabin.seats[seatNumber - 1].is_booked
-                ? handleCancelBooking("A" + seatNumber)
-                : handleSeatClick("A" + seatNumber)
+              // seat.is_booked
+              // ? handleCancelBooking(seat.seat_number)
+              // :
+              handleSeatClick(seat.seat_number)
             }
           >
-            A{seatNumber}
+            {seat.seat_number}
           </div>
         ))}
       </div>

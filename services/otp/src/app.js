@@ -6,10 +6,12 @@ import bodyParser from "body-parser";
 import otpRoutes from "./routes/otp.routes.js";
 import dotenv from "dotenv";
 import config from "../config.js";
+import cors from "cors";
 
 dotenv.config();
 
 const app = express();
+app.use(cors());
 app.use(bodyParser.json());
 
 // MongoDB connection

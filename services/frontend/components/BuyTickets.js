@@ -9,6 +9,7 @@ const BuyTickets = () => {
   const [date, setDate] = useState("");
   const [trains, setTrains] = useState([]); // Holds the fetched trains
   const router = useRouter();
+  const userId = router.query.userId;
 
   const districts = [
     "Bagerhat",
@@ -103,7 +104,7 @@ const BuyTickets = () => {
           // Optionally, redirect to a different page with fetched data
           router.push({
             pathname: "/trains",
-            query: { from, to, date, trains: JSON.stringify(data) },
+            query: { userId, from, to, date, trains: JSON.stringify(data) },
           });
           console.log("data:", data);
         }

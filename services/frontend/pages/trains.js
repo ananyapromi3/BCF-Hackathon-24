@@ -5,7 +5,7 @@ import styles from "../styles/Trains.module.css";
 
 const Trains = () => {
   const router = useRouter();
-  const { from, to, date, trains } = router.query; // Retrieve train data from router query
+  const { userId, from, to, date, trains } = router.query; // Retrieve train data from router query
 
   const [fetchedTrains, setFetchedTrains] = useState([]);
 
@@ -22,11 +22,19 @@ const Trains = () => {
   }, [trains]);
 
   const handleBack = () => {
-    router.push("/homepage");
+    // router.push("/homepage");
+    router.push({
+      pathname: "/homepage",
+      query: { userId },
+    });
   };
 
   const handleCabinClick = (trainId, cabinType) => {
-    router.push(`/train/${trainId}/${cabinType}`);
+    // router.push(`/train/${trainId}/${cabinType}`);
+    router.push({
+      pathname: `/train/${trainId}/${cabinType}`,
+      query: { userId },
+    });
   };
 
   return (

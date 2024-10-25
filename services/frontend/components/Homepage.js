@@ -21,6 +21,7 @@ const Homepage = () => {
         return <BuyTickets />;
     }
   };
+  const userId = router.query.userId;
   const handleLogout = () => {
     // Perform any logout logic here (e.g., clear tokens)
     router.push("/"); // Redirect to the start page (index.js)

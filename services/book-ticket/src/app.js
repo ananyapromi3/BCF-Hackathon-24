@@ -2,8 +2,10 @@ import express from "express";
 import mongoose from "mongoose";
 import bookingRoutes from "./routes/Booking.Routes.js";
 import config from "../config.js";
+import cors from "cors";
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 
 // Database connection

@@ -61,7 +61,12 @@ const UserProfile = () => {
   //       console.error('Error fetching notifications count:', error);
   //   }
   // };
-
+  // router.push({
+  //   pathname: `/homepage`,
+  //   query: {
+  //     user: id,
+  //   },
+  // });
   return <Homepage />;
 };
 

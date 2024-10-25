@@ -6,5 +6,6 @@ const router = express.Router();
 
 router.get("/", usersController.index);
 router.post("/", usersController.save);
+router.get("/lookup/:userId", usersController.lookup);
 
 export default router;

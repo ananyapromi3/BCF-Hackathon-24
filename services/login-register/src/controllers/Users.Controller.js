@@ -46,7 +46,29 @@ async function save(req, res, next) {
   }
 }
 
+async function lookup(req, res, next) {
+  try {
+    const userId = req.params.userId; // Get user ID from URL parameters
+    const user = await User.findById(userId); // Find user by ID
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    return res.status(200).json({
+      status: 200,
+      data: user, // Return the user data
+    });
+  } catch (e) {
+    console.log(e);
+    return res.status(500).json({
+      message: e,
+    });
+  }
+}
+
 export default {
   index: index,
   save: save,
+  lookup: lookup,
 };
